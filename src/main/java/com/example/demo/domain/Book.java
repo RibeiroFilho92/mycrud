@@ -1,39 +1,32 @@
 package com.example.demo.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-public class Autor implements Serializable {
+public class Book implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 2L;
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
 	
-	@OneToMany(mappedBy = "autor")
-	private List<Book> books = new ArrayList<> ();
+	@ManyToOne @JoinColumn(name="autor_id")
+	private Autor autor;
 	
-	public Autor() {};
-	
-	public Autor(Integer id, String name) {
-		
+	public Book() {}
+
+	public Book(Integer id, String name, Autor autor) {
 		this.id = id;
 		this.name = name;
-		
+		this.autor = autor;
 	}
 
 	public Integer getId() {
@@ -52,12 +45,12 @@ public class Autor implements Serializable {
 		this.name = name;
 	}
 
-	public List<Book> getBooks() {
-		return books;
+	public Autor getAutor() {
+		return autor;
 	}
 
-	public void setBooks(List<Book> books) {
-		this.books = books;
+	public void setAutor(Autor autor) {
+		this.autor = autor;
 	}
 
 	@Override
@@ -76,13 +69,13 @@ public class Autor implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Autor other = (Autor) obj;
+		Book other = (Book) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
+	};
 	
 }

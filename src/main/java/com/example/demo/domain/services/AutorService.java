@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.domain.Autor;
+import com.example.demo.exceptions.ObjectNotFoundException;
 import com.example.demo.repositeries.AutorRepository;
 
 @Service
@@ -17,7 +18,8 @@ public class AutorService {
 	public Autor findById(Integer id) {
 		
 		Optional<Autor> autor = repository.findById(id);
-		return autor.orElse(null);
+		
+		return autor.orElseThrow(() -> new ObjectNotFoundException("Object not found"));
 		
 	}
 
