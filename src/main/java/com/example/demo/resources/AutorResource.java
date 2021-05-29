@@ -21,7 +21,7 @@ public class AutorResource {
 	private AutorService service;
 
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	public ResponseEntity<?> findById(@PathVariable Integer id) {
+	public ResponseEntity<Autor> findById(@PathVariable Integer id) {
 		
 		Autor autor = service.findById(id);
 		
@@ -37,4 +37,14 @@ public class AutorResource {
 		return ResponseEntity.created(uri).build();
 		
 	}
+	
+	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
+	public ResponseEntity<Void> update(@RequestBody Autor autor, @PathVariable Integer id) {
+		
+		autor.setId(id);
+		autor = service.update(autor);
+		return ResponseEntity.noContent().build();
+		
+	}
+	
 }

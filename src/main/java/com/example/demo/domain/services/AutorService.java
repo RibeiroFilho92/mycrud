@@ -30,4 +30,11 @@ public class AutorService {
 		
 	}
 	
+	public Autor update(Autor autor) {
+		
+		findById(autor.getId());
+		return repository.save(autor);
+		
+	}
+	
 }
