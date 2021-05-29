@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Book implements Serializable {
@@ -20,7 +20,7 @@ public class Book implements Serializable {
 	private Integer id;
 	private String name;
 	
-	@ManyToOne @JoinColumn(name="autor_id") @JsonBackReference
+	@ManyToOne @JoinColumn(name="autor_id") @JsonIgnore
 	private Autor autor;
 	
 	public Book() {}

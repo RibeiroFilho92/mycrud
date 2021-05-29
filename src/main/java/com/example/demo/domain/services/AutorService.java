@@ -23,4 +23,11 @@ public class AutorService {
 		
 	}
 
+	public Autor insert(Autor autor) {
+		
+		autor.setId(null);
+		return repository.save(autor);
+		
+	}
+	
 }
