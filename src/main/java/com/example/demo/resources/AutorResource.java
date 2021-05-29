@@ -47,4 +47,11 @@ public class AutorResource {
 		
 	}
 	
+	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+	public ResponseEntity<Void> deleteById(@PathVariable Integer id) {
+		
+		service.deleteById(id);
+		return ResponseEntity.noContent().build();
+		
+	}
 }

@@ -18,4 +18,12 @@ public class ResourceExceptionHandler {
 		
 	}
 	
+	@ExceptionHandler(DataNotFoundException.class)
+	public ResponseEntity<StandardError> dataIntegrity(DataNotFoundException e, HttpServletRequest req) {
+		
+		StandardError err = new StandardError(HttpStatus.BAD_REQUEST.value(), e.getMessage(), System.currentTimeMillis());
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
+		
+	}
+	
 }

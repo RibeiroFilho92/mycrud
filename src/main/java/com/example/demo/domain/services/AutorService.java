@@ -3,9 +3,11 @@ package com.example.demo.domain.services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.domain.Autor;
+import com.example.demo.exceptions.DataNotFoundException;
 import com.example.demo.exceptions.ObjectNotFoundException;
 import com.example.demo.repositeries.AutorRepository;
 
@@ -37,4 +39,19 @@ public class AutorService {
 		
 	}
 	
+	public void deleteById(Integer id) {
+		
+		findById(id);
+		try {
+			
+			repository.deleteById(id);
+			
+		} catch (DataIntegrityViolationException e) {
+			
+			throw new DataNotFoundException("You are not alowed to remove Authors with Books createds");
+			
+		}
+
+		
+	}
 }
