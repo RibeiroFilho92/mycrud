@@ -1,5 +1,6 @@
 package com.example.demo.domain.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,12 @@ public class AutorService {
 			
 		}
 
+		
+	}
+	
+	public List<Autor> findAll() {
+		
+		return repository.findAll();
 		
 	}
 }

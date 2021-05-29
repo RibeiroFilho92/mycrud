@@ -1,6 +1,8 @@
 package com.example.demo.resources;
 
 import java.net.URI;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.demo.domain.Autor;
 import com.example.demo.domain.services.AutorService;
+import com.example.demo.dto.AutorDTO;
 
 @RestController @RequestMapping(value="/autors")
 public class AutorResource {
@@ -52,6 +55,17 @@ public class AutorResource {
 		
 		service.deleteById(id);
 		return ResponseEntity.noContent().build();
+		
+	}
+	
+	@RequestMapping(method=RequestMethod.GET)
+	public ResponseEntity<List<AutorDTO>> findAll() {
+		
+		List<Autor> autorsList = service.findAll();
+		List<AutorDTO> autorsListDTO = autorsList.stream().map(autor -> new AutorDTO(autor)).collect(Collectors.toList());
+		
+		
+		return ResponseEntity.ok().body(autorsListDTO);
 		
 	}
 }
