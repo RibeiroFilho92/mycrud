@@ -6,24 +6,24 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
-import com.example.demo.domain.Autor;
+import com.example.demo.domain.Book;
 
-public class AutorDTO implements Serializable {
+public class BookDTO implements Serializable {
 
-	private static final long serialVersionUID = 9L;
+	private static final long serialVersionUID = 10L;
 
 	private Integer id;
 	
 	@NotEmpty(message="Can not be empty")
-	@Length(min=5, max=50, message="Min 5 - Max 50")
+	@Length(min=1, max=100, message="Min 5 - Max 100")
 	private String name;
 	
-	public AutorDTO() {}
+	public BookDTO() {}
 	
-	public AutorDTO(Autor autor) {
+	public BookDTO(Book book) {
 		
-		id = autor.getId();
-		name = autor.getName();
+		id = book.getId();
+		name = book.getName();
 		
 	}
 
