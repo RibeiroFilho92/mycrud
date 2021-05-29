@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.domain.Autor;
+import com.example.demo.dto.AutorDTO;
 import com.example.demo.exceptions.DataNotFoundException;
 import com.example.demo.exceptions.ObjectNotFoundException;
 import com.example.demo.repositeries.AutorRepository;
@@ -70,6 +71,12 @@ public class AutorService {
 		PageRequest pagerequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction),orderBy);
 		
 		return repository.findAll(pagerequest);
+		
+	}
+	
+	public Autor toDTO(AutorDTO autor) {
+		
+		return new Autor(autor.getId(), autor.getName());
 		
 	}
 	
