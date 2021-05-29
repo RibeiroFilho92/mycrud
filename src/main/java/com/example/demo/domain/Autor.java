@@ -8,9 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -24,7 +21,7 @@ public class Autor implements Serializable {
 	private Integer id;
 	private String name;
 	
-	@OneToMany(mappedBy = "autor")
+	@OneToMany(mappedBy = "autor") @JsonManagedReference
 	private List<Book> books = new ArrayList<> ();
 	
 	public Autor() {};
