@@ -37,11 +37,36 @@ public class DBService {
 		Book b5 = new Book(null, "The Running Man", a2);
 		Book b6 = new Book(null, "Cycle of the Werewolf", a2);
 		
+		Book b7 = new Book(null, "The Hobbit", a3);
+		Book b8 = new Book(null, "The Lord of the Rings", a3);
+		Book b9 = new Book(null, "The Silmarillion", a3);
+		
+		Book b10 = new Book(null, "Mistborn: The Final Empire", a4);
+		Book b11 = new Book(null, "Mistborn: The Well of Ascension", a4);
+		Book b12 = new Book(null, "Mistborn: The Hero of Ages", a4);
+		
+		Book b13 = new Book(null, "The Adventures of Sherlock Holmes", a5);
+		Book b14 = new Book(null, "The Memoirs of Sherlock Holmes", a5);
+		Book b15 = new Book(null, "The Return of Sherlock Holmes", a5);
+		
+		Book b16 = new Book(null, "The Da Vinci Code", a6);
+		Book b17 = new Book(null, "Angels & Demons", a6);
+		Book b18 = new Book(null, "The Lost Symbol", a6);
+		
+		Book b19 = new Book(null, "JavaScript and JQuery", a7);
+		Book b20 = new Book(null, "Accessible XHTML and CSS Web Sites", a7);
+		Book b21 = new Book(null, "HTML & CSS", a7);
+		
 		a1.getBooks().addAll(Arrays.asList(b1, b2, b3));
 		a2.getBooks().addAll(Arrays.asList(b4, b5, b6));
+		a3.getBooks().addAll(Arrays.asList(b7, b8, b9));
+		a4.getBooks().addAll(Arrays.asList(b10, b11, b12));
+		a5.getBooks().addAll(Arrays.asList(b13, b14, b15));
+		a6.getBooks().addAll(Arrays.asList(b16, b17, b18));
+		a7.getBooks().addAll(Arrays.asList(b19, b20, b21));
 		
 		autorRepository.saveAll(Arrays.asList(a1, a2, a3, a4, a5, a6, a7));
-		bookRepository.saveAll(Arrays.asList(b1, b2, b3, b4, b5, b6));
+		bookRepository.saveAll(Arrays.asList(b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15, b16, b17, b18, b19, b20, b21));
 		
 	}
 }

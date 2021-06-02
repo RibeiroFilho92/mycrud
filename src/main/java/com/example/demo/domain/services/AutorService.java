@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.domain.Autor;
 import com.example.demo.dto.AutorDTO;
@@ -30,6 +31,7 @@ public class AutorService {
 		
 	}
 
+	@Transactional
 	public Autor insert(Autor autor) {
 		
 		autor.setId(null);
@@ -66,6 +68,7 @@ public class AutorService {
 		
 	}
 	
+	//Paginação não implementada no front**
 	public Page<Autor> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
 		
 		PageRequest pagerequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction),orderBy);

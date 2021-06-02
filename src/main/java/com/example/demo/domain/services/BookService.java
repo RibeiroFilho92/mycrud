@@ -29,9 +29,9 @@ public class BookService {
 	
 	public Book findById(Integer id) {
 		
-		Optional<Book> autor = repository.findById(id);
+		Optional<Book> book = repository.findById(id);
 		
-		return autor.orElseThrow(() -> new ObjectNotFoundException("Object not found"));
+		return book.orElseThrow(() -> new ObjectNotFoundException("Object not found"));
 		
 	}
 	
@@ -76,6 +76,7 @@ public class BookService {
 		
 	}
 	
+	//Paginação não implementada no front**
 	public Page<Book> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
 		
 		PageRequest pagerequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction),orderBy);

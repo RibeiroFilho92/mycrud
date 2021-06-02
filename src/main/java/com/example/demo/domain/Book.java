@@ -28,7 +28,7 @@ public class Book implements Serializable {
 	public Book(Integer id, String name, Autor autor) {
 		this.id = id;
 		this.name = name;
-		this.autor = (autor == null) ? null : autor;
+		this.autor = autor;
 	}
 
 	public Integer getId() {

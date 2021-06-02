@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,7 @@ import com.example.demo.domain.Autor;
 import com.example.demo.domain.services.AutorService;
 import com.example.demo.dto.AutorDTO;
 
-@RestController @RequestMapping(value="/autors")
+@RestController @RequestMapping(value="/autors") @CrossOrigin(origins="http://localhost:3000")
 public class AutorResource {
 	
 	@Autowired
@@ -47,7 +48,7 @@ public class AutorResource {
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Void> update(@Valid @RequestBody AutorDTO autordto, @PathVariable Integer id) {
+	public ResponseEntity<Void> update(@PathVariable Integer id, @Valid @RequestBody AutorDTO autordto) {
 		
 		Autor autor = service.toDTO(autordto);
 		autor.setId(id);
@@ -75,6 +76,7 @@ public class AutorResource {
 		
 	}
 	
+	//Não implementado no front**
 	@RequestMapping(value="/pages", method=RequestMethod.GET)
 	public ResponseEntity<Page<AutorDTO>> findPage(@RequestParam(value="page", defaultValue="0") Integer page, 
 												   @RequestParam(value="linesPerPage", defaultValue="24")Integer linesPerPage, 
